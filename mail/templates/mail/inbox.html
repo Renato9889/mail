@@ -67,7 +67,8 @@
 
     <div class="header">
         <img src="../../static/mail/mail.png" class="logo">
-        <h2>{{ request.user.email }}</h2>
+        <h2>Welcome, {{ request.user.first_name }}({{ request.user.username }})</h2>
+
     </div>
     <div class="buttons-header">
         <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>

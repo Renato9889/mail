@@ -106,7 +106,7 @@ fetch(`/emails/${id}`)
     const read = email['read'];
     const archived = email['archived'];
 
-    const button_archived = document.createElement("button");
+    
     const button_reply = document.createElement("button");
 
     button_reply.innerHTML = "Reply";
@@ -116,7 +116,7 @@ fetch(`/emails/${id}`)
       mail_reply(email);
     });
 
-    
+    const button_archived = document.createElement("button");
     button_archived.classList.add("btn","btn-light","btn-sm");
 
     if (archived === false){
@@ -129,27 +129,26 @@ fetch(`/emails/${id}`)
       mail_archive(id, archived);
     });
 
-   const details = document.querySelector('#email-details');
-   details.innerHTML = `<div class="details-container">
-   <h5>${subject}</h5>
-   <p>${body}</p>
-   <p style="font-size:12px; font-weight: bold;">From:</span> ${sender}</p>
-   <p style="font-size:12px; font-weight: bold;"><span>To:</span> ${recipients}</p>
-   <p style="font-size:12px; font-weight: bold;"><span>Time:</span> ${timestamp}</p>
-   </div>
-   `;
+    const details = document.querySelector('#email-details');
+    details.innerHTML = `<div class="details-container">
+    <h5>${subject}</h5>
+    <p>${body}</p>
+    <p style="font-size:12px; font-weight: bold;">From:</span> ${sender}</p>
+    <p style="font-size:12px; font-weight: bold;"><span>To:</span> ${recipients}</p>
+    <p style="font-size:12px; font-weight: bold;"><span>Time:</span> ${timestamp}</p>
+    </div>
+    `;
 
-   const user = document.querySelector('h2').innerHTML;
-   if (user != sender) {
-    details.appendChild(button_archived);
-    details.appendChild(document.createTextNode(" "));
-    details.appendChild(button_reply);
-   }
-
-   if (!read) {
-    email_as_read(id);
-  }
+    const user = document.querySelector('h2').innerHTML;
+    if (user != sender) {
+      details.appendChild(button_archived);
+      details.appendChild(document.createTextNode(" "));
+      details.appendChild(button_reply);
+    }
     
+    if (!read) {
+      email_as_read(id);
+    }
 });
 }
 function email_as_read(id) {
